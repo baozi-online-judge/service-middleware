@@ -1,3 +1,7 @@
 {
-  "extends": ["tslint-config-egg"]
+  "extends": ["tslint-config-egg"],
+  "rules": {
+    "trailing-comma": false,
+    "quotemark": [true, "single"]
+  }
 }
