@@ -22,11 +22,19 @@
     "clean": "ets clean"
   },
   "dependencies": {
+    "dataloader": "^1.4.0",
     "egg": "^2.6.1",
-    "egg-mysql": "^3.0.0",
-    "egg-scripts": "^2.6.0"
+    "egg-graphql": "^2.3.0",
+    "egg-scripts": "^2.6.0",
+    "egg-sequelize": "^4.3.1",
+    "graphql": "^14.1.1",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^4.43.0",
+    "sequelize-typescript": "^0.6.7",
+    "sqlite3": "^4.0.6"
   },
   "devDependencies": {
+    "@types/graphql": "^14.0.7",
     "@types/mocha": "^2.2.40",
     "@types/node": "^7.0.12",
     "@types/supertest": "^2.0.0",

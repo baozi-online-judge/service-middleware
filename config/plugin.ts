@@ -6,9 +6,13 @@ const plugin: EggPlugin = {
   //   enable: true,
   //   package: 'egg-view-nunjucks',
   // },
-  mysql: {
+  graphql: {
     enable: true,
-    package: 'egg-mysql'
+    package: 'egg-graphql'
+  },
+  sequelize: {
+    enable: false,
+    package: 'egg-sequelize'
   }
 };
 
