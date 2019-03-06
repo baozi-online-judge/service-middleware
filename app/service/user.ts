@@ -2,12 +2,10 @@ import { Service } from 'egg';
 import User from '../model/user';
 
 export default class UserService extends Service {
-  async find(id: string) {
-    const user = await User.findOne({
-      where: {
-        id
-      }
+  async findUsersByIds(ids: string[]): Promise<User[]> {
+    const result = await User.findAll({
+      where: { id: { $in: ids } }
     });
-    return user;
+    return result;
   }
 }

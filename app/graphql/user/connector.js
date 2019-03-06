@@ -1,0 +1,21 @@
+const Service = require('egg').Service;
+const DataLoader = require('dataloader');
+
+class UserConnector extends Service {
+  loader = new DataLoader(async ids => {
+    if (ids.length < 1) {
+      throw new Error(`Should get ids but get ${ids}`);
+    }
+    return await this.ctx.service.user.findUsersByIds(ids);
+  });
+
+  async fetchByIds(ids) {
+    return this.loader.loadMany(ids);
+  }
+
+  async fetchById(id) {
+    return this.loader.load(id);
+  }
+}
+
+module.exports = UserConnector;
