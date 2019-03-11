@@ -7,7 +7,7 @@ class Users extends Model<Users> {
     unique: true,
     primaryKey: true
   })
-  id: string;
+  user_id: string;
 
   @Column({
     allowNull: false
@@ -30,7 +30,7 @@ class Users extends Model<Users> {
   role: number;
 
   @Column
-  avatar: Buffer;
+  avatar_url: string;
 }
 
 export default Users;

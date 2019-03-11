@@ -1,5 +1,6 @@
 type User {
-  id: String!
+  user_id: ID!
   nickname: String!
   email: String!
+  avatar_url: String
 }

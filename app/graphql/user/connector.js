@@ -19,6 +19,10 @@ class UserConnector extends Service {
   async fetchById(id) {
     return this.loader.load(id);
   }
+
+  async fetchAll() {
+    return await this.ctx.service.user.findAllUsers();
+  }
 }
 
 module.exports = UserConnector;

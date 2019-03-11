@@ -1,1 +1,5 @@
 scalar Date
+enum Role {
+  Admin
+  Regular
+}
