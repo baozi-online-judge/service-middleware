@@ -67,7 +67,9 @@ class UserConnector extends Controller {
       user_id,
       password,
       nickname,
-      email
+      email,
+      avatar_url:
+        'https://www.easyicon.net/api/resizeApi.php?id=1214127&size=128'
     });
     return newUser;
   }
