@@ -5,3 +5,8 @@ type User {
   avatar_url: String
   role: Role!
 }
+
+enum Role {
+  ADMIN
+  REGULAR
+}

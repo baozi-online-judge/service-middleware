@@ -11,5 +11,27 @@ module.exports = {
       }
       return await ctx.connector.user.fetchAll();
     }
+  },
+  Mutation: {
+    async login(root, args, ctx) {
+      const { user_id, password, remember_me } = args;
+      return await ctx.connector.user.login({ user_id, password, remember_me });
+    },
+    async logout(root, args, ctx) {
+      return await ctx.connector.user.logout();
+    },
+    async register(root, args, ctx) {
+      const { user_id, password, email, nickname } = args;
+      return await ctx.connector.user.register({
+        user_id,
+        password,
+        email,
+        nickname
+      });
+    }
+  },
+  Role: {
+    ADMIN: 1,
+    REGULAR: 2
   }
 };

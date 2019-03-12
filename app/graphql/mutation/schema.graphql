@@ -1,0 +1,10 @@
+type Mutation {
+  login(user_id: ID!, password: String!, remember_me: Boolean = true): User
+  logout: Boolean
+  register(
+    user_id: ID!
+    password: String!
+    nickname: String!
+    email: String!
+  ): User
+}

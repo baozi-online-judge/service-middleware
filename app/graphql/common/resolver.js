@@ -1,4 +1,4 @@
-const { GraphQLEnumType, GraphQLScalarType } = require('graphql');
+const { GraphQLScalarType } = require('graphql');
 const { Kind } = require('graphql/language');
 
 module.exports = {
@@ -17,9 +17,5 @@ module.exports = {
       }
       return null;
     }
-  }),
-  Role: {
-    ADMIN: 1,
-    REGULAR: 2
-  }
+  })
 };
