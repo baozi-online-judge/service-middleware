@@ -28,6 +28,7 @@
     "egg-scripts": "^2.6.0",
     "egg-sequelize": "^4.3.1",
     "graphql": "^14.1.1",
+    "jsonwebtoken": "^8.5.0",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^4.43.0",
     "sequelize-typescript": "^0.6.7",
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "@types/graphql": "^14.0.7",
+    "@types/jsonwebtoken": "^8.3.2",
     "@types/mocha": "^2.2.40",
     "@types/node": "^7.0.12",
     "@types/supertest": "^2.0.0",

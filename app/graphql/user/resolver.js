@@ -10,6 +10,9 @@ module.exports = {
         return await ctx.connector.user.fetchByIds(ids);
       }
       return await ctx.connector.user.fetchAll();
+    },
+    async current(root, args, ctx) {
+      return await ctx.connector.user.fetchCurrent();
     }
   },
   Mutation: {

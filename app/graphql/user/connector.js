@@ -1,5 +1,6 @@
 const Controller = require('egg').Controller;
 const DataLoader = require('dataloader');
+const jwt = require('jsonwebtoken');
 
 class UserConnector extends Controller {
   constructor(ctx) {
@@ -24,12 +25,30 @@ class UserConnector extends Controller {
     return await this.ctx.service.user.findAllUsers();
   }
 
+  async fetchCurrent() {
+    const userId = this.ctx.session.user_id;
+    if (userId) {
+      return await this.fetchById(userId);
+    }
+    return null;
+  }
+
   async login({ user_id, password, remember_me }) {
     const user = await this.ctx.service.user.login({ user_id, password });
     if (user) {
       this.ctx.session.user_id = user.user_id;
+      const token = jwt.sign(
+        { user_id: user.user_id },
+        this.config.jwt.jwtSecret,
+        {
+          expiresIn: this.config.jwt.jwtExpire
+        }
+      );
+      this.ctx.cookies.set('token', token, {
+        maxAge: 14 * 24 * 3600 * 1000 // 14 days
+      });
       if (remember_me) {
-        this.ctx.session.maxAge = 14 * 24 * 3600 * 1000; // 14 days
+        this.ctx.session.maxAge = 30 * 24 * 3600 * 1000; // 30 days
       }
     }
     return user;

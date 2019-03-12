@@ -10,7 +10,7 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1551165056865_4485';
 
   // add your egg config in here
-  config.middleware = [ 'graphql' ];
+  config.middleware = [ 'auth', 'graphql' ];
 
   // add your special config in here
   const bizConfig = {
@@ -43,6 +43,11 @@ export default (appInfo: EggAppInfo) => {
 
   config.graphql = {
     router: '/graphql'
+  };
+
+  config.jwt = {
+    jwtSecret: 'hello-world',
+    jwtExpire: '14 days'
   };
 
   config.bodyParser = {

@@ -1,4 +1,5 @@
 type Query {
   user(id: String!): User
   users(ids: [String!] = []): [User]!
+  current: User
 }
