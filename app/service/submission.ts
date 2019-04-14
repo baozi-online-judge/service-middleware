@@ -23,7 +23,8 @@ export default class SubmissionService extends Service {
 
   async fetchById(recordId: string) {
     const result = await Submission.findOne({
-      where: { record_id: recordId }
+      where: { record_id: recordId },
+      include: [ Problem ],
     });
     return result;
   }

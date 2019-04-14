@@ -9,6 +9,10 @@ module.exports = {
         userId
       );
       return result;
+    },
+    async detail(root, args, ctx) {
+      const { recordId } = args;
+      return await ctx.service.submission.fetchById(recordId);
     }
   },
   Mutation: {
