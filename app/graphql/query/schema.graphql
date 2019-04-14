@@ -2,4 +2,6 @@ type Query {
   user(id: String!): User
   users(ids: [String!] = []): [User]!
   current: User
+  problems(ids: [String!] = [], extract: Int = 0): [Problem]!
+  relatedSubmissions(userId: String): [Submission]!
 }

@@ -1,0 +1,15 @@
+type Problem {
+  problem_id: ID!
+  title: String!
+  content: String!
+  template: String
+  require_time: Int!
+  tags: String!
+  difficulty: Difficulty!
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}

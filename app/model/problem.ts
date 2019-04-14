@@ -2,39 +2,44 @@ import { Table, Model, Column, HasMany } from 'sequelize-typescript';
 import Record from './submission';
 
 @Table
-class Users extends Model<Users> {
+class Problems extends Model<Problems> {
   @Column({
     allowNull: false,
     unique: true,
     primaryKey: true
   })
-  user_id: string;
+  problem_id: string;
 
   @Column({
     allowNull: false
   })
-  nickname: string;
+  title: string;
 
   @Column({
     allowNull: false
   })
-  email: string;
+  content: string;
 
   @Column({
     allowNull: false
   })
-  password: string;
+  tags: string;
 
   @Column({
     allowNull: false
   })
-  role: number;
+  require_time: number;
+
+  @Column({
+    allowNull: false
+  })
+  difficulty: number;
 
   @Column
-  avatar_url: string;
+  template: string;
 
   @HasMany(() => Record)
   submissions: Record[];
 }
 
-export default Users;
+export default Problems;

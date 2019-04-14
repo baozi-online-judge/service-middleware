@@ -8,7 +8,13 @@ export default () => {
       return;
     }
     const token: string = ctx.cookies.get('token');
-    if (ctx.session && ctx.session.user_id && token) {
+    if (
+      ctx.request.body &&
+      (ctx.request.body.operation === 'login' ||
+        ctx.request.body.operation === 'register')
+    ) {
+      await next();
+    } else if (ctx.session && ctx.session.user_id && token) {
       try {
         verify(token, ctx.app.config.jwt.jwtSecret, {
           maxAge: ctx.app.config.jwt.jwtExpire
@@ -18,12 +24,6 @@ export default () => {
         ctx.body = { message: 'Bad token' };
         ctx.status = 401;
       }
-    } else if (
-      ctx.request.body &&
-      (ctx.request.body.operation === 'login' ||
-        ctx.request.body.operation === 'register')
-    ) {
-      await next();
     } else {
       ctx.body = { message: 'Please Login' };
       ctx.status = 401;

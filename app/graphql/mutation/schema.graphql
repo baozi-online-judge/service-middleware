@@ -7,4 +7,9 @@ type Mutation {
     nickname: String!
     email: String!
   ): User
+  submitCode(
+    problem_id: String!,
+    language: String!,
+    code: String!
+  ): Submission
 }

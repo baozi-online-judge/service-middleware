@@ -1,0 +1,19 @@
+type Submission {
+  record_id: ID!
+  user: User!
+  problem: Problem!
+  result: Result!
+  example_input: String
+  expect_output: String
+  user_output: String
+  language: String!
+  code: String!
+  time: Date!
+}
+
+enum Result {
+  ACCEPTED
+  WRONG_ANSWER
+  RUNTIME_ERROR
+  WAITING
+}

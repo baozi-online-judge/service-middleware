@@ -9,7 +9,7 @@ module.exports = {
       return new Date(value);
     },
     serialize(value) {
-      return value.getTime();
+      return new Date(value).getTime();
     },
     parseLiteral(ast) {
       if (ast.kind === Kind.INT) {
