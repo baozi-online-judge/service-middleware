@@ -29,6 +29,8 @@ module.exports = {
     ACCEPTED: 1,
     WRONG_ANSWER: 2,
     RUNTIME_ERROR: 3,
-    WAITING: 4
+    WAITING: 4,
+    COMPILE_ERROR: 5,
+    TIME_LIMIT_EXCEEDED: 6
   }
 };

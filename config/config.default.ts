@@ -55,6 +55,15 @@ export default (appInfo: EggAppInfo) => {
     jsonLimit: '10mb'
   };
 
+  config.io = {
+    namespace: {
+      '/': {
+        connectionMiddleware: [ 'connection' ],
+        packetMiddleware: []
+      }
+    }
+  };
+
   // the return config will combines to EggAppConfig
   return {
     ...config,

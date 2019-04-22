@@ -13,6 +13,10 @@ const plugin: EggPlugin = {
   sequelize: {
     enable: false,
     package: 'egg-sequelize'
+  },
+  io: {
+    enable: true,
+    package: 'egg-socket.io'
   }
 };
 

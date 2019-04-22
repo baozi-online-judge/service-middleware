@@ -3,3 +3,4 @@
 
 import 'egg';
 import 'egg-graphql';
+import 'egg-socket.io';

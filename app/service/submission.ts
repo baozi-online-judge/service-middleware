@@ -21,10 +21,10 @@ export default class SubmissionService extends Service {
     return result;
   }
 
-  async fetchById(recordId: string) {
+  async fetchById(recordId: number) {
     const result = await Submission.findOne({
       where: { record_id: recordId },
-      include: [ Problem ],
+      include: [ Problem ]
     });
     return result;
   }
@@ -45,6 +45,22 @@ export default class SubmissionService extends Service {
       code,
       time: time || Date.now()
     });
+    if (submission) {
+      await this.judge(submission.record_id);
+    }
     return submission;
+  }
+
+  async judge(recordId: number) {
+    const submission = await this.fetchById(recordId);
+    if (submission) {
+      const eventName = `Sub${recordId}`;
+      const handleResult = (sub: Submission) => {
+        console.log('result::', sub.dataValues.result);
+        this.app.judger.removeListener(eventName, handleResult);
+      };
+      this.app.judger.on(eventName, handleResult);
+      this.app.judger.addTask(submission);
+    }
   }
 }
