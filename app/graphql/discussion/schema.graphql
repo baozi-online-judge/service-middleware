@@ -1,0 +1,9 @@
+type Discussion {
+    discussion_id: ID!
+    title: String!
+    content: String!
+    problem: Problem
+    user: User!
+    create_time: Date!
+    update_time: Date!
+}

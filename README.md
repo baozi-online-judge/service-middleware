@@ -1,18 +1,14 @@
-# hackernews-async-ts
-
-[Hacker News](https://news.ycombinator.com/) showcase using typescript && egg
+# Panda Online Judge Server
 
 ## QuickStart
 
 ### Development
 
 ```bash
-$ npm i
-$ npm run dev
-$ open http://localhost:7001/
+$ yarn install
+$ yarn run dev
+$ open http://localhost:7001/graphql
 ```
-
-Don't tsc compile at development mode, if you had run `tsc` then you need to `npm run clean` before `npm run dev`.
 
 ### Deploy
 

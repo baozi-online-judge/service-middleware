@@ -5,4 +5,5 @@ type Query {
   problems(ids: [String!] = [], extract: Int = 0): [Problem]!
   relatedSubmissions(userId: String): [Submission]!
   detail(recordId: String!): Submission
+  discussions(ids: [String!] = [], extract: Int = 0): [Discussion]!
 }
