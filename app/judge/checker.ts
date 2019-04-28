@@ -84,14 +84,19 @@ class Checker extends EventEmitter {
             )
           );
           new Script(testCode).runInContext(testSandBox);
+          let shouldAccpeted = true;
           for (const asyncFn of cases) {
             const isPassed = await asyncFn();
             if (!isPassed) {
+              shouldAccpeted = false;
               break;
             }
           }
-          console.log('testCode: ', testCode);
-          console.log(sandbox);
+          if (shouldAccpeted) {
+            await this.submission.updateAttributes({
+              result: 1
+            });
+          }
         }
       } catch (err) {
         console.error(
@@ -105,6 +110,7 @@ class Checker extends EventEmitter {
       }
     }
     this.emit(this.eventName, this.submission);
+    this.emit('outcome', this.submission);
   }
 }
 

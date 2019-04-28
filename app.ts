@@ -6,7 +6,7 @@ export default class AppBoot implements IBoot {
     this.app = app;
   }
   async didReady() {
-    this.app.judger.run(5000);
+    this.app.judger.run(3000);
     console.log('The judger is Running!');
   }
 }

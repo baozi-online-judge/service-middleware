@@ -37,14 +37,17 @@ export default class SubmissionService extends Service {
     code,
     time
   }: CreateSubmissionInput) {
-    const submission = await Submission.create({
-      user_id,
-      problem_id,
-      result: result || 4,
-      language,
-      code,
-      time: time || Date.now()
-    });
+    const submission = await Submission.create(
+      {
+        user_id,
+        problem_id,
+        result: result || 4,
+        language,
+        code,
+        time: time || Date.now()
+      },
+      { include: [ Problem ] }
+    );
     if (submission) {
       await this.judge(submission.record_id);
     }
@@ -53,6 +56,7 @@ export default class SubmissionService extends Service {
 
   async judge(recordId: number) {
     const submission = await this.fetchById(recordId);
+    this.ctx.socket.emit('res', 'judge ' + recordId);
     if (submission) {
       const eventName = `Sub${recordId}`;
       const handleResult = (sub: Submission) => {

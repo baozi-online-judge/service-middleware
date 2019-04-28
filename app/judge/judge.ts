@@ -43,6 +43,9 @@ export default class JudgeSystem extends EventEmitter {
       checker.on(checker.eventName, () => {
         this.emit(checker.eventName, checker.submission);
       });
+      checker.on('outcome', () => {
+        this.emit('outcome', checker.submission);
+      });
       await checker.run();
     }
   }
